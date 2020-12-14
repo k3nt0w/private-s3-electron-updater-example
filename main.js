@@ -23,23 +23,20 @@ function createDefaultWindow() {
   return win;
 }
 
-const latestYMLPath = process.platform === 'darwin' ? 'application/latest-mac.yml' : 'application/latest.yml'
-
 autoUpdater.on('checking-for-update', () => {
   log.info('checking-for-update')
   const opts = {
     service: 's3',
     region: 'ap-northeast-1',
-    host: 'private-s3-electron-auto-updater-test.s3-ap-northeast-1.amazonaws.com',
-    path: latestYMLPath
+    method: 'GET',
+    host: 's3-ap-northeast-1.amazonaws.com',
+    path: 'private-s3-electron-auto-updater-test/application/latest-mac.yml'
   }
   aws4.sign(opts, {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   })
-  log.info('--- opts.headers ---')
-  log.info(opts.headers)
-  log.info(opts)
+  autoUpdater.requestHeaders = opts.headers
   sendStatusToWindow('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
