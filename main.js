@@ -26,7 +26,7 @@ function createDefaultWindow() {
 const latestYMLPath = process.platform === 'darwin' ? 'application/latest-mac.yml' : 'application/latest.yml'
 
 autoUpdater.on('checking-for-update', () => {
-  Logger.info('checking-for-update')
+  log.info('checking-for-update')
   const opts = {
     service: 's3',
     region: 'ap-northeast-1',
@@ -37,17 +37,17 @@ autoUpdater.on('checking-for-update', () => {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   })
-  Logger.info('--- opts.headers ---')
-  Logger.info(opts.headers)
-  Logger.info(opts)
+  log.info('--- opts.headers ---')
+  log.info(opts.headers)
+  log.info(opts)
   sendStatusToWindow('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
-  Logger.info('update-available')
+  log.info('update-available')
   sendStatusToWindow('Update available.');
 })
 autoUpdater.on('update-not-available', (info) => {
-  Logger.info('update-not-available')
+  log.info('update-not-available')
   sendStatusToWindow('Update not available.');
 })
 autoUpdater.on('error', (err) => {
@@ -60,7 +60,7 @@ autoUpdater.on('download-progress', (progressObj) => {
   sendStatusToWindow(log_message);
 })
 autoUpdater.on('update-downloaded', (info) => {
-  Logger.info('update-downloaded')
+  log.info('update-downloaded')
   sendStatusToWindow('Update downloaded');
 });
 app.on('ready', function() {
