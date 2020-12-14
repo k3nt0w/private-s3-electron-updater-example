@@ -27,6 +27,8 @@ autoUpdater.on('checking-for-update', () => {
   log.info('checking-for-update')
   const opts = {
     service: 's3',
+    protocol: "https:",
+    hostname: "s3-ap-northeast-1.s3.amazonaws.com",
     region: 'ap-northeast-1',
     method: 'GET',
     host: 's3-ap-northeast-1.amazonaws.com',
