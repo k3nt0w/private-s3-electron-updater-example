@@ -6,10 +6,8 @@
   "author": "Kento Watanabe",
   "scripts": {
     "start": "electron .",
-    "build:local": "cross-env IS_LOCAL=true yarn electron-builder --mac --config electron-builder.js --publish always",
     "release:mac": "yarn electron-builder --mac --config electron-builder.js --publish always",
-    "release:win": "yarn electron-builder --win --config electron-builder.js --publish always",
-    "publish": "build -p always"
+    "release:win": "yarn electron-builder --win --config electron-builder.js --publish always"
   },
   "devDependencies": {
     "electron": "10.0.0",
