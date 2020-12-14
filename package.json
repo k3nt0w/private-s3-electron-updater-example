@@ -1,6 +1,6 @@
 {
   "name": "private-s3-electron-updater-example",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "main.js",
   "description": "private s3 electron updater example project",
   "author": "Kento Watanabe",

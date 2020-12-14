@@ -28,21 +28,14 @@ autoUpdater.on('checking-for-update', () => {
 
   const opts = {
     service: 's3',
-    // protocol: "https:",
-    // hostname: "s3-ap-northeast-1.s3.amazonaws.com",
     region: 'ap-northeast-1',
     method: 'GET',
     host: 'private-s3-electron-auto-updater-test.s3-ap-northeast-1.amazonaws.com',
-    // path: 'private-s3-electron-auto-updater-test/application/latest-mac.yml'
     path: 'application/latest-mac.yml'
   }
-  // aws4.sign(opts, {
-  //   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  // })
   aws4.sign(opts, {
-    accessKeyId: "AKIATKKS7KZQVDVUBTNV",
-    secretAccessKey: "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"
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   })
   autoUpdater.requestHeaders = opts.headers
   log.info(opts)
