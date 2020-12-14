@@ -23,8 +23,6 @@ function createDefaultWindow() {
   return win;
 }
 
-log.info(autoUpdater)
-
 autoUpdater.on('checking-for-update', () => {
   log.info('checking-for-update')
 
